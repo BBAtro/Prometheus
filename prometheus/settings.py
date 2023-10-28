@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prometheus_db',
         'USER': 'root',
-        'PASSWORD': 'erz123',
+        'PASSWORD': 'erz134679852bat',
         'HOST':'localhost',
         'PORT':'3306',
     }
