@@ -22,6 +22,10 @@ class Post(models.Model): #class that will be responsible for communication with
     status = models.CharField(max_length=2, 
                               choices=Status.choices,
                               default=Status.DRAFT)
+    """We defined the Status enumerated class by subclassing the
+    models.TextChoices class. The available options for post status are.
+    DRAFT and PUBLISHED. Their corresponding values are DF and PB, and their labels or readable names are Draft and Published.
+    labels or readable names are Draft and Published."""
 
 
     class Meta: #meta class for model metadata definition
