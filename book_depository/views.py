@@ -11,4 +11,4 @@ def post_list(request):
     posts = Post.published.all()#This view retrieves all posts with PUBLISHED status using the published manager
     return render(request, #We use the shortcut render() function provided by Django to render a list of posts in a given pattern.
                   'book_depository/post/list.html',
-                  {'posts': posts})
+                  {'posts': posts}) 
