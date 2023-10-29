@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 
 class Post(models.Model): #class that will be responsible for communication with the database and posts in the application
 
+    class Status(models.TextChoices):
+        DRAFT = 'DF', 'Draft'
+        PUBLISHED = 'PB', 'Published'
+
     title = models.CharField(max_length=250) #that line created in database field "title" typed VARCHAR with parametres lenth
     slug = models.SlugField(max_length=250) #that line created in database field "slug" typed VARCHAR with parametres lenth
     author = models.ForeignKey(User,
@@ -14,7 +18,11 @@ class Post(models.Model): #class that will be responsible for communication with
     body = models.TextField() #that line created in database field "body" typed TEXT
     publish = models.DateTimeField(default=timezone.now) #created database field DateTime to store the date and time the post was published with parametres of current time zone
     created = models.DateTimeField(auto_now_add=True) #db field datetime created post 
-    updates = models.DateTimeField(auto_now=True) #db field datetime updated post (overwritten) 
+    updates = models.DateTimeField(auto_now=True) #db field datetime updated post (overwritten)
+    status = models.CharField(max_length=2, 
+                              choices=Status.choices,
+                              default=Status.DRAFT)
+
 
     class Meta: #meta class for model metadata definition
         ordering = ['-publish'] #sorts posts by publication time
