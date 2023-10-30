@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
@@ -12,3 +11,13 @@ def post_list(request):
     return render(request, #We use the shortcut render() function provided by Django to render a list of posts in a given pattern.
                   'book_depository/post/list.html',
                   {'posts': posts}) 
+
+def post_detail(request,id):
+    post = get_object_or_404(Post,
+                        id=id,
+                        status = Post.Status.PUBLISHED)
+    """The specified function retrieves an object matching the passed parameters,
+     or an HTTP exception with a status code of 404 (not found) if the object is not found"""
+    return render(request,
+                  'book_depository/post/detail.html',
+                  {'post': post})
