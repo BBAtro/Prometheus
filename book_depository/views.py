@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from .models import Post
 
 # Create your views here.
 
@@ -9,7 +10,7 @@ def post_list(request):
     The specified parameter is required for all functions-representations."""
     posts = Post.published.all()#This view retrieves all posts with PUBLISHED status using the published manager
     return render(request, #We use the shortcut render() function provided by Django to render a list of posts in a given pattern.
-                  'book_depository/post/list.html',
+                  'books/post/list.html',
                   {'posts': posts}) 
 
 def post_detail(request,id):
@@ -19,5 +20,5 @@ def post_detail(request,id):
     """The specified function retrieves an object matching the passed parameters,
      or an HTTP exception with a status code of 404 (not found) if the object is not found"""
     return render(request,
-                  'book_depository/post/detail.html',
+                  'books/post/detail.html',
                   {'post': post})

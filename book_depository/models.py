@@ -1,8 +1,14 @@
 from django.db import models
+from django.db.models.query import QuerySet
 from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset()\
+                        .filter(status=Post.Status.PUBLISHED)
 
 class Post(models.Model): #class that will be responsible for communication with the database and posts in the application
 
@@ -27,6 +33,10 @@ class Post(models.Model): #class that will be responsible for communication with
     DRAFT and PUBLISHED. Their corresponding values are DF and PB, and their labels or readable names are Draft and Published.
     labels or readable names are Draft and Published."""
 
+    objects = models.Manager() 
+    #By default, each model uses the objects manager. This manager retrieves all objects from the database.
+    published = PublishedManager()
+    #However, it is possible to define application-specific model managers.
 
     class Meta: #meta class for model metadata definition
         ordering = ['-publish'] #sorts posts by publication time
