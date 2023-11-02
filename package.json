@@ -1,0 +1,16 @@
+{
+  "name": "prometheus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "BBAtro",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^4.5.0"
+  }
+}

@@ -1,11 +1,14 @@
 {% load static %}
+{% load django_vite %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
-        <link href="{% static "css/blog.css" %}" rel="stylesheet">
+        <link href="{% static "src/css/styles.css" %}" rel="stylesheet">
+        {% vite_hmr_client %}   
+        {% vite_asset 'js/main.js' %}
     </head>
-    <body>
+    <body class="bd">
         <div id="content">
             {% block content %}
             {% endblock %}
@@ -13,6 +16,6 @@
         <div id="sidebar">
             <h2>My blog</h2>
             <p>This is my blog.</p>
-        </div>
+        </div>  
     </body>
 </html>

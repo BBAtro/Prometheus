@@ -1,0 +1,5 @@
+@import "https://unpkg.com/open-props"; /*intagrate OpenProps CSS*/
+
+.bd {
+    background-color: aqua;
+}
