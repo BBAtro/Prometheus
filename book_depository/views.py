@@ -16,7 +16,12 @@ def post_list(request):
 def post_detail(request,id):
     post = get_object_or_404(Post,
                         id=id,
-                        status = Post.Status.PUBLISHED)
+                        status = Post.Status.PUBLISHED,
+    #match the URL parameters, and use them to retrieve the corresponding Post object
+                        slug=post,
+                        publish__year=year,
+                        publish__mouth=mouth,
+                        publish__day=day)
     """The specified function retrieves an object matching the passed parameters,
      or an HTTP exception with a status code of 404 (not found) if the object is not found"""
     return render(request,
