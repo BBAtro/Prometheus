@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'prometheus_db',
         'USER': 'root',
         'PASSWORD': 'erz134679852bat',
-        'HOST':'localhost',
+        'HOST':'database',
         'PORT':'3306',
     }
 }
@@ -123,16 +123,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'book_depository/static/'
+STATIC_URL = '/frontend/'
 
 # Where ViteJS assets are built.
-DJANGO_VITE_ASSETS_PATH = BASE_DIR / "book_depository" / "static" / "dist"
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "frontend" / "dist"
 
 # If use HMR or not.
 DJANGO_VITE_DEV_MODE = DEBUG
 
 # Name of static files folder (after called python manage.py collectstatic)
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "frontend"
 
 # Include DJANGO_VITE_ASSETS_PATH into STATICFILES_DIRS to be copied inside
 # when run command python manage.py collectstatic

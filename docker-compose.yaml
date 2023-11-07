@@ -1,0 +1,21 @@
+version: '1.0.0'
+
+services:
+  web:
+    build: .
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database  # Опция зависимости от сервиса базы данных
+    environment:
+      - DB_HOST=database  # Подключение к базе данных по имени сервиса внутри сети
+
+
+  database:
+    image: mysql
+    restart: always
+    ports:
+      - "4000:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=erz134679852bat

@@ -1,8 +1,8 @@
 const { resolve } = require('path');
  
 module.exports = {
-  root: resolve('./book_depository/static/src'),
-  base: '/book_depository/static/',
+  root: resolve('./frontend/src'),
+  base: '/frontend/',
   server: {
     host: '0.0.0.0',
     port: 3000,
@@ -16,14 +16,14 @@ module.exports = {
     extensions: ['.js', '.json'],
   },
   build: {
-    outDir: resolve('./book_depository/static/dist'),
+    outDir: resolve('./frontend/dist'),
     assetsDir: '',
     manifest: true,
     emptyOutDir: true,
     target: 'es2015',
     rollupOptions: {
       input: {
-        main: resolve('./book_depository/static/src/js/main.js'),
+        main: resolve('./frontend/src/js/main.js'),
       },
       output: {
         chunkFileNames: undefined,
