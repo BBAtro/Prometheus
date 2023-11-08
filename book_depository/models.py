@@ -54,7 +54,7 @@ class Post(models.Model): #class that will be responsible for communication with
     Django allows you to implement the get_absolute_url() method in your own models,
       which returns the canonical URL of an object."""   
     def get_absolute_url(self):
-        return reverse("books:post_detail",
+        return reverse('books:post_detail',
                        args=[self.publish.year,
                              self.publish.month,
                              self.publish.day,

@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'prometheus_db',
         'USER': 'root',
         'PASSWORD': 'erz134679852bat',
-        'HOST':'database',
+        'HOST':'localhost',
         'PORT':'3306',
     }
 }

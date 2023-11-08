@@ -7,7 +7,7 @@
     {% for post in posts %}
         <h2>
             {% comment %} <a href="{% url "books:post_detail" post.id %}"> {% endcomment %}
-            <a href="{{ posr.get_absolute_url }}">
+            <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
             </a>
         </h2>
@@ -16,6 +16,7 @@
         </p>
         {{ post.body|truncatewords:30|linebreaks }}
     {% endfor %}
+    {% include "pagination.html" with page=posts %}
 {% endblock content %}
 
 
