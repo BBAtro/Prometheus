@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post
+from django.views.generic import ListView
+from django.views.decorators.http import require_POST
+from .models import Post, Comment
+from .forms import CommentForm
+
 
 # Create your views here.
 
@@ -10,7 +14,7 @@ def post_list(request):
     """The post_list view takes a request object as a single parameter. 
     The specified parameter is required for all functions-representations."""
     post_list = Post.published.all()#This view retrieves all posts with PUBLISHED status using the published manager
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 4)
     # Pagination with 3 posts per page
     #We create an instance of the Paginator class with the number of objects returned per page.
     page_number = request.GET.get('page', 1)
@@ -32,6 +36,13 @@ def post_list(request):
                   'books/post/list.html',
                   {'posts': posts}) 
 
+
+# class PostListView(ListViews):
+#    queryset = Post.published.all()
+#    context_object_name = 'posts'
+#    paginate_by = 3
+#    template_name = 'blog/post/list.html'
+
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post,
                         status = Post.Status.PUBLISHED,
@@ -42,6 +53,30 @@ def post_detail(request, year, month, day, post):
                         publish__day=day)
     """The specified function retrieves an object matching the passed parameters,
      or an HTTP exception with a status code of 404 (not found) if the object is not found"""
+    comments = post.comments.filter(active=True)#list actived comments to this post
+    form = CommentForm()#form for users comment
     return render(request,
                   'books/post/detail.html',
-                  {'post': post})
+                  {'post': post,
+                   'comments': comments,
+                   'form': form})
+
+@require_POST
+def post_comment(request, post_id):
+    post = get_object_or_404(Post,
+                            id=post_id,
+                            status=Post.Status.PUBLISHED)
+    comment = None
+    # Comment was sent
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+      #create object Comment class, dont save in database
+      comment = form.save(commit=False)
+      #assign a post to a comment
+      comment.post = post
+      #save comment in database
+      comment.save()
+    return render(request, 'books/post/comment.html',
+                  {'post': post,
+                   'form': form,
+                   'comment': comment})

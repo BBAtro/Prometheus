@@ -62,3 +62,24 @@ class Post(models.Model): #class that will be responsible for communication with
     """The reverse() function will generate the URL dynamically by applying the URL name defined in the URL templates.
       the URL name defined in the URL templates."""
     
+class Comment(models.Model): #This module Comment
+    # The ForeignKey field was added to link each comment to a single post
+    post = models.ForeignKey(Post,
+                             on_delete=models.CASCADE,
+                             related_name='comments')
+    """The related_name attribute allows you to assign a name to an attribute that is used to link from an associated object back to it.
+    A comment object's post can be retrieved via comment.post"""
+    name = models.CharField(max_length=1000)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+    class Meta: #meta class for model metadata definition
+        ordering = ['created'] #sorts posts by created time
+        indexes = [
+            models.Index(fields=['created']), #add index to database on the field "created"
+        ]
+
+    def __str__(self): #method for displaying information from the title field
+        return f'Comment by {self.name} on {self.post}'

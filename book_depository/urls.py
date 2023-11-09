@@ -6,7 +6,10 @@ app_name = 'books'#The above source code defines the application namespace using
 urlpatterns = [
     # post submissions
     path('', views.post_list, name='post_list'),#The first URL pattern takes no arguments and is relative to the post_list view
+    # path('', views.PostListView.as_view(), name='post_list'),
     path('<int:year>/<int:month>/<int:day>/<slug:post>/', views.post_detail, name='post_detail'),#path('<int:id>/', views.post_detail, name='post_detail'),
     #The second template relates to the post_detail view and takes only one id argument,
     # which matches an integer specified by the int path converter integer.
+    path('<int:post_id>/comment/',
+         views.post_comment, name='post_comment')#
 ]
