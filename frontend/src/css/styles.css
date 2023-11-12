@@ -1,3 +1,13 @@
-.bd {
-    background-color: aqua;
+@import "https://unpkg.com/open-props";
+
+body {
+    padding: 0%;
+    background-color: var(--red-4);
+    flex: auto;
+}
+
+#header {
+    margin: var(--size-000);
+    border: var(--border-size-2) solid var(--blue-8);
+    background-color: var(--blue-4);
 }

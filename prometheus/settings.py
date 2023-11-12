@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'books.apps.BooksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'book_depository.apps.BookDepositoryConfig',
     'django_vite',
 ]
 
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'prometheus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prometheus_db',
+        'NAME': 'prometheus1_db',
         'USER': 'root',
         'PASSWORD': 'erz134679852bat',
         'HOST':'localhost',
