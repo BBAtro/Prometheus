@@ -2,12 +2,64 @@
 
 body {
     padding: 0%;
-    background-color: var(--red-4);
+    background-color: var(--gray-9);
     flex: auto;
 }
 
-#header {
+#header { 
+    color: var(--red-5);
+    display: flex;
     margin: var(--size-000);
-    border: var(--border-size-2) solid var(--blue-8);
-    background-color: var(--blue-4);
+    border: var(--border-size-2) solid var(--gray-9);
+    background-color: var(--gray-1);
 }
+
+.logo {
+    float: left;
+    position: relative;
+    height: 30%;
+    margin: var(--size-5);
+}
+
+.menu {
+    list-style: none;
+    margin: auto;
+    padding: 10px   ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu div {
+    margin-left: var(--size-5);
+}
+
+.selected {
+}
+
+.user {
+    float: right;
+    margin: var(--size-5);
+}
+
+#main {
+    display: flex;
+}
+
+#content {
+    background-color: var(--gray-1);
+    margin-left: var(--size-8);
+    /* margin-right: auto; */
+    margin-top: var(--size-8);
+    width: 70%;
+    
+}
+
+#blocks {
+    background-color: white;
+    margin-left: var(--size-8);
+    margin-right: var(--size-8);
+    margin-top: var(--size-8);
+    width: 25%;
+    min-height: auto;
+}
+

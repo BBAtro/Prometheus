@@ -7,14 +7,37 @@
         <link href="{% static "css/styles.css" %}" rel="stylesheet">
         {% vite_hmr_client %}   
         {% vite_asset 'js/main.js' %}
-</head>
+    </head>
     <body class="bd">
         <div id="header">
             <span class="logo">Prometheus</span>
+            {% if request.user.is_authenticated %}
+                <ul class="menu">
+                    <div {% if section == "images" %}class="selected"{% endif %}>
+                        <a href="#">Images</a>
+                    </div>
+                    <div {% if section == "people" %}class="selected"{% endif %}>
+                        <a href="#">People</a>
+                    </div>
+                </ul>
+            {% endif %}
+            <span class="user">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url "dashboard" %}">{{ request.user.first_name|default:request.user.username }}</a>
+                    <a href="{% url "logout" %}">Выход</a>
+                {% else %}
+                    <a href="{% url "login" %}">Вход</a>
+                {% endif %}
+            </span>
         </div>
-        <div id="content">
-            {% block content %}
-            {% endblock %}
+        <div id="main">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div id="blocks">
+
+            </div>
         </div>
     </body>
 </html>

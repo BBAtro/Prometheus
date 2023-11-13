@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+LOGIN_REDIRECT_URL = 'dashboard'
+#tells Django the URL to which to redirect the user after a successful login,
+# if there is no next parameter in the request
+LOGIN_URL = 'login'
+#The URL to which the user should be redirected to register their login 
+# (e.g., views that use the login_required decorator)
+LOGOUT_URL = 'logout'
+#URL to which the user should be redirected to register their exit
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

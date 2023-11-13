@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .forms import LoginForm
 
 # Create your views here.
@@ -43,3 +44,12 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'books/login.html', {'form': form})
 
+
+"""If the user is authenticated, it executes a decorated representation; 
+if the user is not authenticated, 
+it redirects the user to the login URL with the originally requested URL as a GET parameter named next"""
+@login_required #decorator, checks the authentication of the current user
+def dashboard(request):
+    return render(request,
+                  'books/dashboard.html',
+                  {'section': 'dashboard'})
