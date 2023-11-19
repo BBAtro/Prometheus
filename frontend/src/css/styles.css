@@ -1,24 +1,29 @@
 @import "https://unpkg.com/open-props";
 
 body {
-    padding: 0%;
-    background-color: var(--gray-9);
     flex: auto;
+    padding: 0%;
+    background-color: var(--gray-4);
+    font-family: var(--font-sans);
 }
 
 #header { 
-    color: var(--red-5);
     display: flex;
     margin: var(--size-000);
-    border: var(--border-size-2) solid var(--gray-9);
+    border: var(--border-size-2) solid var(--gray-1);
     background-color: var(--gray-1);
+    color: var(--red-5);
 }
 
 .logo {
     float: left;
     position: relative;
+    width: 90%;
     height: 30%;
     margin: var(--size-5);
+    font-weight: var(--font-weight-9);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-5);
 }
 
 .menu {
@@ -27,6 +32,7 @@ body {
     padding: 10px   ;
     display: flex;
     justify-content: space-between;
+    font-size: var(--font-size-3)
 }
 
 .menu div {
@@ -38,7 +44,10 @@ body {
 
 .user {
     float: right;
-    margin: var(--size-5);
+    width: auto;
+    margin-right: 0%;
+    margin: var(--size-7);
+    font-size: var(--font-size-3);
 }
 
 #main {
@@ -48,8 +57,8 @@ body {
 #content {
     background-color: var(--gray-1);
     margin-left: var(--size-8);
-    /* margin-right: auto; */
     margin-top: var(--size-8);
+    padding: var(--size-5);
     width: 70%;
     
 }

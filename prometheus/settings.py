@@ -21,6 +21,8 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 #URL to which the user should be redirected to register their exit
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
