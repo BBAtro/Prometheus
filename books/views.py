@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, UserRegistrationForm
+from django.contrib import messages
+from .forms import LoginForm, UserRegistrationForm, \
+                   UserEditForm, ProfileEditForm
+from .models import Profile
 
 # Create your views here.
 
@@ -16,6 +19,8 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             #save User object
             new_user.save()
+            #Create user profile
+            Profile.objects.create(user=new_user)
             return render(request,
                           'books/register_done.html',
                           {'new_user': new_user})
@@ -73,3 +78,31 @@ def dashboard(request):
     return render(request,
                   'books/dashboard.html',
                   {'section': 'dashboard'})
+
+"""Added an edit view so that users can edit their personal information. 
+Added a login_required decorator to it, since only authenticated users can edit their profiles."""
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user,
+                                 data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                                       data=request.POST)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            """In order to validate the transmitted is_valid() method of both forms is called. 
+            If both forms contain valid data, both forms are saved by calling the save() method, 
+            to update the corresponding objects in the database"""
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Профиль обновлен')
+        else:
+            messages.error(request, 'Ошибка обновления вашего профиля')
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(
+                                    instance=request.user.profile)
+    return render(request,
+                  'books/edit.html',
+                  {'user_form': user_form,
+                   'profile_form': profile_form})

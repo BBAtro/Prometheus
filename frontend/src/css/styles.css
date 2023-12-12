@@ -5,14 +5,29 @@ body {
     padding: 0%;
     background-color: var(--gray-4);
     font-family: var(--font-sans);
+    font-size: var(--font-size-3);
 }
 
 #header { 
     display: flex;
     margin: var(--size-000);
-    border: var(--border-size-2) solid var(--gray-1);
-    background-color: var(--gray-1);
-    color: var(--red-5);
+    border: var(--border-size-2) solid var(--gray-10);
+    background-color: var(--gray-10);
+}
+
+.hd_but {
+    padding: 9px;
+    color: var(--gray-1);
+    font-size: var(--font-size-2);
+    border-radius: var(--radius-2);
+    border: none;
+    background-color: var(--gray-8);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-9);
+}
+
+.hd_but:hover {
+    background-color: var(--red-7);
 }
 
 .logo {
@@ -24,6 +39,7 @@ body {
     font-weight: var(--font-weight-9);
     font-family: var(--font-sans);
     font-size: var(--font-size-5);
+    color: var(--red-7);
 }
 
 .menu {
@@ -56,7 +72,7 @@ body {
 
 #content {
     background-color: var(--gray-1);
-    margin-left: var(--size-8);
+    margin-left: var(--size-10);
     margin-top: var(--size-8);
     padding: var(--size-5);
     width: 70%;
@@ -66,9 +82,34 @@ body {
 #blocks {
     background-color: white;
     margin-left: var(--size-8);
-    margin-right: var(--size-8);
+    margin-right: var(--size-10);
     margin-top: var(--size-8);
     width: 25%;
     min-height: auto;
 }
 
+.but {
+    padding: 9px;
+    color: var(--gray-1);
+    font-size: var(--font-size-1);
+    border-radius: var(--radius-2);
+    border: none;
+    background-color: var(--red-7);
+    font-family: var(--font-sans);
+}
+
+.but:hover {
+    background-color: var(--red-8);
+}
+
+.dash_inf {
+    text-decoration: underline solid 5px var(--red-7);
+}
+
+.hypertext {
+    color: var(--red-5);
+}
+
+.hypertext:hover {
+    color: var(--red-9);
+}

@@ -4,5 +4,23 @@
 
 {% block content %}
     <h1>Профиль</h1>
-
-{% endblock content %}
+    <p>
+        Вы можете
+        <a href="{% url "edit" %}">
+            <button class="but">Изменить профиль</button></a>
+        <a href="{% url "password_change" %}">
+            <button class="but">Изменить пароль</button></a>
+    </p>
+    <h3>
+        Ваши данные:
+        <p>Ваше имя: 
+            <u class="dash_inf">{{ request.user.first_name|default:request.user.username }}</u>
+        </p>
+        <p>Ваш логин: 
+            <u class="dash_inf">{{ request.user.username }}</u>
+        </p>
+        <p>Ваша почта: 
+            <u class="dash_inf">{{ request.user.email }}</u>
+        </p>
+    </h3>
+    {% endblock content %}

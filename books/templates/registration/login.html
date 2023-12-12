@@ -5,11 +5,12 @@
 {% block content %}
     <div class="login-form">
         <h1>Вход в учетную запись</h1>
+        <p>Если у вас нет учетной записи <a class="hypertext" href="{% url "register" %}">зарегистрируйтесь здесь</a></p>
         <form action="{% url 'login' %}" method="post">
             {{ form.as_p }}
             {% csrf_token %}
             <input type="hidden" name="text" value="{{ next }}" />
-            <p><input type="submit" value="Вход"></p>
+            <p><input class="but" type="submit" value="Вход"></p>
         </form>
         <p>
             <a href="{% url "password_reset" %}">
